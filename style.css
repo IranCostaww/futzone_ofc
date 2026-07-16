@@ -1096,17 +1096,113 @@ PÁGINA PRODUTOS
 
     background: #888;
 }
+/* ==========================================
+   CORREÇÃO: PÁGINA DE PRODUTOS NO CELULAR
+   (a classe .produto é usada tanto no
+   carrossel da Home quanto na grade de
+   Produtos, e as regras responsivas do
+   carrossel estavam "vazando" pra grade.
+   Aqui isolamos a grade de produtos.)
+========================================== */
 
 @media (max-width: 768px) {
-    #loja { padding: 20px 15px; }
-    .catalogo .produto { min-width: 0; width: 100%; }
-    .catalogo .produto img { height: 140px; }
+
+    #loja {
+        padding: 20px 15px;
+    }
+
+    .catalogo .produto {
+        min-width: 0;
+        width: 100%;
+    }
+
+    .catalogo .produto img {
+        height: 140px;
+    }
 }
 
 @media (max-width: 480px) {
-    .catalogo { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-    .catalogo .produto { padding: 10px; }
-    .catalogo .produto img { height: 110px; }
-    .catalogo .produto h4 { font-size: 13px; min-height: 36px; margin-top: 8px; }
-    .catalogo .produto p { font-size: 16px; margin: 8px 0; }
+
+    .catalogo {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .catalogo .produto {
+        padding: 10px;
+    }
+
+    .catalogo .produto img {
+        height: 110px;
+    }
+
+    .catalogo .produto h4 {
+        font-size: 13px;
+        min-height: 36px;
+        margin-top: 8px;
+    }
+
+    .catalogo .produto p {
+        font-size: 16px;
+        margin: 8px 0;
+    }
+}
+
+/* ==========================================
+   CORREÇÃO: PÁGINA PRINCIPAL NO CELULAR
+   O menu tinha muito espaço em branco entre
+   os itens (herdado do layout de tela cheia)
+   e as setas do carrossel ficavam grandes
+   demais perto do título "Lançamentos".
+========================================== */
+
+html, body {
+    overflow-x: hidden;
+}
+
+@media (max-width: 768px) {
+
+    #navbar li {
+        padding: 0 8px;
+    }
+
+    .titulo-vitrine {
+        padding: 0 5px;
+    }
+
+    .titulo-vitrine h2 {
+        font-size: 22px;
+    }
+
+    .setas button {
+        width: 36px;
+        height: 36px;
+        font-size: 16px;
+    }
+
+    .carrossel {
+        margin: 0 -5px;
+        padding: 0 5px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    #hero {
+        height: 75vh;
+    }
+
+    #hero h1, #hero h2 {
+        font-size: 26px;
+    }
+
+    #hero button {
+        width: 160px;
+        height: 60px;
+        font-size: 14px;
+    }
+
+    .footer-container {
+        text-align: center;
+    }
 }
