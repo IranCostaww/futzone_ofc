@@ -277,11 +277,11 @@ function filtrarProdutos(){
 
     }
 
-    else if(ordenar.value=="za"){
-
+else if(ordenar.value=="za"){
         resultado.sort((a,b)=>b.nome.localeCompare(a.nome));
-
     }
+
+    mostrarProdutos(resultado);   // <-- essa linha estava faltando
 
 }
 
