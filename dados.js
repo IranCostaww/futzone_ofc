@@ -293,6 +293,8 @@ function criarModalCheckout(){
                 <button id="btn-calcular-frete">Calcular frete</button>
             </div>
             <div id="passo-resumo" style="display:none">
+                <input type="text" id="input-nome" placeholder="Seu nome completo">
+                <input type="text" id="input-endereco" placeholder="Rua, número, bairro, complemento">
                 <div class="resumo" id="texto-resumo"></div>
                 <button id="btn-pagar">Ir para pagamento</button>
             </div>
@@ -320,6 +322,8 @@ function comprar(nomeCamisa, preco){
     const passoCep = document.getElementById("passo-cep");
     const passoResumo = document.getElementById("passo-resumo");
     const textoResumo = document.getElementById("texto-resumo");
+    const inputNome = document.getElementById("input-nome");
+    const inputEndereco = document.getElementById("input-endereco");
     const textoErro = document.getElementById("texto-erro");
 
     let freteCalculado = null;
@@ -372,6 +376,13 @@ function comprar(nomeCamisa, preco){
     btnPagar.onclick = async () => {
         if (!freteCalculado) return;
 
+        const nomeCliente = inputNome.value.trim();
+        const enderecoCliente = inputEndereco.value.trim();
+
+        if (!nomeCliente || !enderecoCliente) {
+            textoErro.textContent = "Preencha seu nome e endereço completo.";
+            return;
+        }
         btnPagar.textContent = "Abrindo pagamento...";
         btnPagar.disabled = true;
 
@@ -398,13 +409,18 @@ function comprar(nomeCamisa, preco){
             window.open(dados.link_pagamento, "_blank");
 
             // Abre o WhatsApp já com uma mensagem pronta pra o cliente mandar o endereço
-            const mensagem =
-                `Olá! Acabei de pagar a camisa ${nomeCamisa} (CEP ${freteCalculado.cep}). ` +
-                `Segue meu endereço completo com número e complemento: `;
-            const linkWhats = `https://wa.me/5573988625840?text=${encodeURIComponent(mensagem)}`;
-            window.open(linkWhats, "_blank");
+        const total = preco + freteCalculado.valor_frete;
+        const mensagem =
+            `Olá! Acabei de pagar a camisa ${nomeCamisa}.\n` +
+            `Nome: ${nomeCliente}\n` +
+            `Endereço: ${enderecoCliente}, ${freteCalculado.cidade}/${freteCalculado.uf}, CEP ${freteCalculado.cep}\n` +
+            `Valor do produto: R$ ${preco.toFixed(2).replace(".", ",")}\n` +
+            `Frete: R$ ${freteCalculado.valor_frete.toFixed(2).replace(".", ",")}\n` +
+            `Total: R$ ${total.toFixed(2).replace(".", ",")}`;
+        const linkWhats = `https://wa.me/5573988625840?text=${encodeURIComponent(mensagem)}`;
+        window.open(linkWhats, "_blank");
 
-            fecharModalCheckout();
+        fecharModalCheckout();   
 
         } catch (erro) {
             textoErro.textContent = "Erro ao conectar com o servidor.";
