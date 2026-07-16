@@ -238,5 +238,14 @@
     "imagem": "imagens/frança2.jpg",
     "estoque": false,
     "id": 30
+  },
+
+  {
+  "id": 99,
+  "nome": "TESTE - Camisa R$1",
+  "preco": 1,
+  "categoria": "Nacional",
+  "imagem": "imagens/futzone.webp",
+  "estoque": true
   }
 ]

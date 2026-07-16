@@ -561,7 +561,7 @@ PÁGINA PRODUTOS
     #header {
         flex-direction: row;
         flex-wrap: wrap;
-        justify-content: space-between;
+        justify-content: center;
         align-items: center;
         padding: 15px 20px;
     }
@@ -577,8 +577,12 @@ PÁGINA PRODUTOS
         flex-direction: row;
         justify-content: center;
         flex-wrap: wrap;
-        gap: 12px;
+        gap: 6px;
         margin-top: 15px;
+    }
+
+    #navbar li {
+    padding: 0 4px;
     }
 
     #navbar a {
@@ -1163,7 +1167,7 @@ html, body {
 @media (max-width: 768px) {
 
     #navbar li {
-        padding: 0 8px;
+        padding: 0 4px;
     }
 
     .titulo-vitrine {
@@ -1204,5 +1208,36 @@ html, body {
 
     .footer-container {
         text-align: center;
+    }
+}
+/* ==========================================
+   CORREÇÃO: TABLET (até 992px)
+========================================== */
+
+@media (max-width: 992px) {
+
+    #hero {
+        height: 70vh;
+        padding: 0 40px;
+    }
+
+    #hero h1, #hero h2 {
+        font-size: 36px;
+    }
+
+    .vitrine {
+        padding: 40px 40px;
+    }
+
+    .titulo-vitrine h2 {
+        font-size: 28px;
+    }
+
+    .produto {
+        min-width: 220px;
+    }
+
+    .produto img {
+        height: 200px;
     }
 }
