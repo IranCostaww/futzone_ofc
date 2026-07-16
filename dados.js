@@ -417,7 +417,7 @@ function comprar(nomeCamisa, preco){
             `Valor do produto: R$ ${preco.toFixed(2).replace(".", ",")}\n` +
             `Frete: R$ ${freteCalculado.valor_frete.toFixed(2).replace(".", ",")}\n` +
             `Total: R$ ${total.toFixed(2).replace(".", ",")}`;
-        const linkWhats = `https://wa.me/5573988625840?text=${encodeURIComponent(mensagem)}`;
+        const linkWhats = `https://wa.me/55739988625840?text=${encodeURIComponent(mensagem)}`;
         window.open(linkWhats, "_blank");
 
         fecharModalCheckout();   
