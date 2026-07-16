@@ -1096,3 +1096,17 @@ PÁGINA PRODUTOS
 
     background: #888;
 }
+
+@media (max-width: 768px) {
+    #loja { padding: 20px 15px; }
+    .catalogo .produto { min-width: 0; width: 100%; }
+    .catalogo .produto img { height: 140px; }
+}
+
+@media (max-width: 480px) {
+    .catalogo { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .catalogo .produto { padding: 10px; }
+    .catalogo .produto img { height: 110px; }
+    .catalogo .produto h4 { font-size: 13px; min-height: 36px; margin-top: 8px; }
+    .catalogo .produto p { font-size: 16px; margin: 8px 0; }
+}
